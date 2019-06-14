@@ -6,7 +6,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 
-	"cf-fantasy/server"
+	"github.com/ddreyer/cf-fantasy/server"
 
 	"github.com/gin-gonic/gin"
 )
