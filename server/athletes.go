@@ -1,40 +1,26 @@
 package models
 
-import (
-	"net/http"
-
-	"github.com/elgs/gosqljson"
-	"github.com/gin-gonic/gin"
-)
-
-func CreateAthleteTables() {
-	query := `DROP TABLE if exists maleAthletes`
+// Create temporary athlete tables for development
+func CreateTempAthleteTables() {
+	query := `DROP TABLE if exists teams`
 	if _, err := db.Exec(query); err != nil {
 		panic(err)
 	}
-	query = `CREATE TABLE maleAthletes (lastname VARCHAR(20), firstname VARCHAR(20))`
+	query = `DROP TABLE if exists athletes`
 	if _, err := db.Exec(query); err != nil {
 		panic(err)
 	}
-	query = `INSERT into maleAthletes (lastname, firstname) VALUES ('Bridges', 'Josh')`
+	query = `CREATE TABLE athletes (athleteId INT AUTO_INCREMENT, firstname VARCHAR(50), lastname VARCHAR(50), sex VARCHAR(1), PRIMARY KEY (athleteId))`
 	if _, err := db.Exec(query); err != nil {
 		panic(err)
 	}
-	query = `DROP TABLE if exists femaleAthletes`
-	if _, err := db.Exec(query); err != nil {
-		panic(err)
-	}
-	query = `CREATE TABLE femaleAthletes (lastname VARCHAR(20), firstname VARCHAR(20))`
+	query = `INSERT into athletes (firstname, lastname, sex) VALUES ('Josh', 'Bridges', 'm'), ('Tia', 'Toomey', 'f')`
 	if _, err := db.Exec(query); err != nil {
 		panic(err)
 	}
 }
 
-func GetTeams(c *gin.Context) {
-	_, data, err := gosqljson.QueryDbToArray(db, "lower", "SELECT * from players;")
-	if err != nil {
-		panic(err)
-	}
+// This function will populate the real 2019 athlete tables from a csv file
+// func CreateAthleteTables() {
 
-	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "data": data})
-}
+// }

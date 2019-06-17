@@ -12,7 +12,8 @@ func main() {
 	models.InitDb()
 
 	// temporarily create athlete tables
-	models.CreateAthleteTables()
+	models.CreateTempAthleteTables()
+	models.CreateTempTeamTables()
 
 	router := gin.Default()
 

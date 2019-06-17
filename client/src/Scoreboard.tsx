@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Grid, Header, Statistic } from 'semantic-ui-react'
+import { Grid, Header, Table } from 'semantic-ui-react';
 
-export default class Home extends Component {
+export default class Scoreboard extends Component {
     render() {
         return (
             <Grid textAlign='center' columns='equal'>
@@ -18,25 +18,23 @@ export default class Home extends Component {
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column>
-                        <Statistic.Group>
-                            <Statistic color='red'>
-                                <Statistic.Value>27</Statistic.Value>
-                                <Statistic.Label>points</Statistic.Label>
-                            </Statistic>
-                                <Statistic color='orange'>
-                                <Statistic.Value>8'</Statistic.Value>
-                                <Statistic.Label>subs</Statistic.Label>
-                            </Statistic>
-                        </Statistic.Group>
+                        <Header as='h2'> Day 1 </Header>
                     </Grid.Column>
-                    <Grid.Column>
-                        
-                    </Grid.Column>
-                    <Grid.Column>
-                        
-                    </Grid.Column>
-
                 </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column>
+                        <Table celled definition>
+
+                        </Table>
+                    </Grid.Column>
+                    <Grid.Column>
+                        
+                    </Grid.Column>
+                    <Grid.Column>
+                        
+                    </Grid.Column>
+                </Grid.Row>
+                
             </Grid>
         );
     }
