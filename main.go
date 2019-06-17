@@ -1,9 +1,6 @@
 package main
 
 import (
-	"database/sql"
-	"net/http"
-
 	_ "github.com/go-sql-driver/mysql"
 
 	"github.com/ddreyer/cf-fantasy/server"
@@ -11,22 +8,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var DB *sql.DB
-
 func main() {
-	var err error
-	DB, err = sql.Open("mysql", "root@/cfDb")
-	if err != nil {
-		panic(err)
-	}
-	defer DB.Close()
+	models.InitDb()
 
 	// temporarily create athlete tables
-	models.CreateAthleteTables(DB)
+	models.CreateAthleteTables()
 
 	router := gin.Default()
-	router.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello world")
-	})
+
+	api := router.Group("/api")
+	api.GET("teams", models.GetTeams)
 	router.Run()
 }

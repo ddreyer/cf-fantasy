@@ -3,6 +3,14 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:c013ffc6e15f9f898078f9d38441c68b228aa7b899659452170250ccb27f5f1e"
+  name = "github.com/elgs/gosqljson"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "027aa4915315a0b2825c0f025cea347829b974fa"
+
+[[projects]]
+  branch = "master"
   digest = "1:36fe9527deed01d2a317617e59304eb2c4ce9f8a24115bcc5c2e37b3aee5bae4"
   name = "github.com/gin-contrib/sse"
   packages = ["."]
@@ -114,6 +122,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/elgs/gosqljson",
     "github.com/gin-gonic/gin",
     "github.com/go-sql-driver/mysql",
   ]
